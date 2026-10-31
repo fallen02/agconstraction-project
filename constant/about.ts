@@ -5,27 +5,27 @@ export const pillars = [
     icon: Compass,
     title: "Our Mission",
     description:
-      "To construct enduring structures that empower communities, exceed client expectations, and elevate modern architectural excellence through sustainable innovation.",
+      "To understand our client needs and deliver high-quality buildings within time and budget, always with quality, innovation and safety in everything we build.",
   },
   {
     icon: Eye,
     title: "Our Vision",
     description:
-      "To be globally recognized as the benchmark of construction mastery, driving green building standards and setting new milestones in civic engineering.",
+      "To be the leading company in construction services, known for quality and innovation, supporting our staff and the communities in which we work.",
   },
   {
     icon: ShieldCheck,
     title: "Our Values",
     description:
-      "Uncompromising integrity, zero-harm job site safety, radical transparency in cost estimating, and relentless attention to foundational craftsmanship.",
+      "Quality is what we pursue and safety is what we follow, with innovation and care for our staff and the communities we serve.",
   },
 ];
 
 export const stats = [
-  { value: "99%", label: "Customer Satisfaction Rate" },
-  { value: "320+", label: "Qualified Experts On-Site" },
-  { value: "200+", label: "Commercial Projects Completed" },
-  { value: "4,253", label: "Worldwide Happy Clients" },
+  { value: 8, label: "Key Clients Served", prifix: "+"},
+  { value: 4, label: "Ongoing Projects", prifix: "+"},
+  { value: 3, label: "Rainbow Hospital Units", prifix: "+"},
+  { value: 8, label: "Specialty Works Offered", prifix: "+"},
 ];
 
 export const team = [

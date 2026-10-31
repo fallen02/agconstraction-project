@@ -21,7 +21,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-20 lg:py-28 bg-accent-blue relative overflow-hidden"
+      className="py-20 lg:py-28  relative overflow-hidden"
     >
       {/* Blueprint grid watermark */}
       <div

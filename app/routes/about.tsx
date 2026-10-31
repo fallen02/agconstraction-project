@@ -7,14 +7,15 @@ import CtaBanner from "../../components/CtaBanner";
 import ContactSection from "../../components/ContactSection";
 import { SectionHeading, SectionTag, Button } from "../../components/ui";
 import { pillars, stats, team } from "../../constant/about";
+import { CounterStat } from "../../components/ui/CouterStat";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "About Us - BuiltUp Construction Inc." },
+    { title: "About Us | AG Constructions" },
     {
       name: "description",
       content:
-        "Learn about BuiltUp's heritage, certified master builders, company mission, values, and leadership team.",
+        "From foundations to finishing, we build industrial, commercial and residential spaces with quality first and safety always.",
     },
   ];
 }
@@ -23,21 +24,21 @@ export function meta({}: Route.MetaArgs) {
 export default function AboutPage() {
   return (
     <div className="w-full">
-      {/* Page Hero matching reference image */}
       <PageHero
         title="About Us"
         breadcrumb="About Us"
         image="https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=1920&q=80"
       />
 
-      {/* 1. Introductory About Section matching reference */}
       <AboutSection />
 
-      {/* 2. Company Heritage & Vision Story */}
-      <section className="py-20 lg:py-28 bg-accent-blue relative overflow-hidden">
+      <section className="py-20 lg:py-28  relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(to_right,#1E293B42_1px,transparent_1px),linear-gradient(to_bottom,#1E293B81_1px,transparent_1px)] bg-size-[2rem_2rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-15 pointer-events-none"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: Image with 25+ Badge */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -45,7 +46,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 relative"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] bg-slate-100 border border-slate-200 group">
+
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-4/3 bg-slate-100 border border-slate-200 group">
                 <img
                   src="https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=1000&q=80"
                   alt="Construction engineers overlooking skyscraper development"
@@ -53,7 +55,6 @@ export default function AboutPage() {
                 />
               </div>
 
-              {/* Floating 25+ badge matching reference */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -66,16 +67,15 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <div className="text-3xl font-heading font-black text-secondary">
-                    25<span className="text-primary">+</span>
+                    8<span className="text-primary">+</span>
                   </div>
                   <div className="text-xs font-heading font-bold text-slate-500 uppercase tracking-wider">
-                    Years of Heritage
+                    Specialty Works Offered
                   </div>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right: Story Details */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -83,35 +83,27 @@ export default function AboutPage() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6"
             >
-              <SectionTag>OUR STORY</SectionTag>
+              <SectionTag>Our history</SectionTag>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-secondary tracking-tight leading-tight mb-6">
-                Crafting structures that <br />
-                <span className="text-primary">last a lifetime</span>
+                Built with care, <br />
+                <span className="text-primary">Finished with pride</span>
               </h2>
               <p className="text-slate-600 text-base leading-relaxed mb-5">
-                For over two decades, BuiltUp has stood at the forefront of
-                structural engineering, architectural innovation, and general
-                contracting. From landmark commercial skyscrapers to
-                community-focused residential developments, our mission has
-                always been to build with unyielding precision and
-                uncompromising safety.
+                Led by Shaik Mowlana, a B.Tech Civil graduate with a PGP in Quantity Surveying from NICMAR, AG Constructions works closely with every client to understand their needs and deliver safe, high-quality buildings on time.
               </p>
               <p className="text-slate-600 text-base leading-relaxed mb-8">
-                Our licensed master builders collaborate intimately with
-                award-winning architects, utilizing cutting-edge Building
-                Information Modeling (BIM) workflows to reduce lifecycle costs
-                and eliminate site delays.
+                Our clients include Casa Fortune Developers, Rainbow Children Hospitals, Govt. Zilla Parishad School at Garapadu, Tri-pod Apartment, Invicta International School and RV Villa, projects that reflect our commitment to quality and safety. Today we are working on four ongoing projects.
               </p>
               <Button to="/services" variant="primary" size="md">
-                Explore Our Capabilities
+                Explore Our Services
               </Button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 3. Mission, Vision, and Values Cards */}
-      <section className="py-20 lg:py-28 bg-white overflow-hidden">
+      <section className="py-20 lg:py-28 bg-white overflow-hidden relative">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pillars.map((pillar, idx) => {
@@ -146,8 +138,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Full-Width Video Showcase Banner */}
-      <section className="relative h-[360px] sm:h-[480px] w-full overflow-hidden flex items-center justify-center bg-secondary">
+      {/*<section className="relative h-[360px] sm:h-[480px] w-full overflow-hidden flex items-center justify-center bg-secondary">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -156,7 +147,6 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-secondary/60 backdrop-blur-[2px]" />
 
-        {/* Centered Play Button with Pulsing Ripple Effect */}
         <div className="relative z-10 flex flex-col items-center text-center px-4">
           <motion.button
             whileHover={{ scale: 1.12 }}
@@ -171,15 +161,18 @@ export default function AboutPage() {
             Watch Our 25-Year Engineering Journey
           </span>
         </div>
-      </section>
+      </section>*/}
 
-      {/* 5. Key Metrics Counter Section */}
-      <section className="py-20 lg:py-28 bg-accent-blue overflow-hidden">
+      <section className="py-20 lg:py-28 relative  overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(to_right,#1E293B42_1px,transparent_1px),linear-gradient(to_bottom,#1E293B81_1px,transparent_1px)] bg-size-[2rem_2rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-15 pointer-events-none"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            tag="EXCELLENCE IN NUMBERS"
-            title="Building the future on a foundation of excellence"
-            subtitle="We specialize in developing high-specification residential towers, commercial headquarters, and modern civic infrastructure."
+            tag="what we do"
+            title="Strong structure, Refined interiors, Reliable MEP, Safe execution"
+            subtitle="From MS structural steel fabrication and brick work to plastering, tiling, painting, waterproofing, false ceilings, railing, grill and tensile fabric works, we cover the full scope of civil structural, interior finishing and MEP works."
             className="mb-16"
           />
 
@@ -195,11 +188,9 @@ export default function AboutPage() {
                   duration: 0.5,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="bg-secondary text-white rounded-2xl p-8 text-center shadow-lg hover:shadow-2xl transition-shadow"
+                className="bg-secondary text-white rounded-2xl p-8 text-center "
               >
-                <div className="text-4xl sm:text-5xl font-heading font-black text-primary mb-2">
-                  {s.value}
-                </div>
+                <CounterStat start={0} end={s.value} suffix={s.prifix} className="text-5xl"/>
                 <div className="text-sm text-slate-300 font-medium">
                   {s.label}
                 </div>
@@ -209,16 +200,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. CTA Banner */}
       <CtaBanner />
 
-      {/* 7. Leadership Team */}
       <section className="py-20 lg:py-28 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            tag="OUR TEAM"
-            title="Meet our master builders"
-            subtitle="Our licensed master builders and senior structural engineers bring decades of certified experience to every site."
+            tag="TEAM"
+            title="Meet Our Team"
+            subtitle="Meet the people who plan, build and finish every single project with quality and safety."
             className="mb-16"
           />
 
@@ -237,7 +226,7 @@ export default function AboutPage() {
                 whileHover={{ y: -6 }}
                 className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100">
+                <div className="aspect-4/3 w-full overflow-hidden bg-slate-100">
                   <img
                     src={member.image}
                     alt={member.name}

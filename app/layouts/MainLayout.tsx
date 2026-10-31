@@ -1,14 +1,20 @@
-import { Outlet, useLocation } from "react-router";
+import { Outlet, useLocation, useNavigation } from "react-router";
 import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import MobileMenu from "../../components/MobileMenu";
 import Footer from "../../components/Footer";
 import MagicCursor from "../../components/magicCursor";
 
+
+
 export default function MainLayout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const location = useLocation();
+
+  const navigation = useNavigation()
+
+  const isLoading = navigation.state != 'idle'
 
   // Scroll to top automatically when navigating between pages
   useEffect(() => {
@@ -41,14 +47,14 @@ export default function MainLayout() {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-white text-secondary font-sans selection:bg-primary selection:text-secondary flex flex-col">
-      {/* Mobile Drawer Navigation */}
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-white text-secondary font-sans selection:bg-primary selection:text-secondary flex flex-col">
+
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
       />
 
-      {/* Main Navigation Bar */}
+
       <Navbar
         isSticky={isSticky}
         isMobileMenuOpen={mobileMenuOpen}

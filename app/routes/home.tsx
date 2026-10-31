@@ -11,11 +11,11 @@ import ContactSection from "../../components/ContactSection";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "BuiltUp - Premier Construction & Architecture" },
+    { title: "AG Constructions - Best Construction Company in Guntur" },
     {
       name: "description",
       content:
-        "Building dreams with precision and excellence. Exceptional commercial, civil, and residential construction services.",
+        "From foundations to finishing, we build industrial, commercial and residential spaces with quality first and safety always.",
     },
   ];
 }
