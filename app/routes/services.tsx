@@ -1,24 +1,18 @@
 import type { Route } from "./+types/services";
 import { motion } from "motion/react";
-import {
-  Building2,
-  DraftingCompass,
-  HardHat,
-  Ruler,
-  Layers,
-  Sparkles,
-  ArrowUpRight,
-} from "lucide-react";
 import { SectionHeading, Button } from "../../components/ui";
 import PageHero from "../../components/PageHero";
 import WhyChooseUsSection from "../../components/WhyChooseUsSection";
 import TestimonialsSection from "../../components/TestimonialsSection";
 import CtaBanner from "../../components/CtaBanner";
 import ContactSection from "../../components/ContactSection";
+import { detailedServices } from "../../constant/services";
+import { stats } from "../../constant/about";
+import { CounterStat } from "../../components/ui/CouterStat";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Construction Services - BuiltUp Construction Inc." },
+    { title: "Services - BuiltUp Construction Inc." },
     {
       name: "description",
       content:
@@ -27,80 +21,21 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const detailedServices = [
-  {
-    icon: Building2,
-    title: "Commercial Building Construction",
-    subtitle: "High-rise towers, business centers & industrial plants",
-    description:
-      "We build resilient, state-of-the-art commercial developments designed to meet rigorous structural standards and future workspace demands.",
-    image:
-      "https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    icon: DraftingCompass,
-    title: "Architectural & Concept Design",
-    subtitle: "Turnkey planning, aesthetic innovation & permits",
-    description:
-      "From preliminary sketches to code-compliant architectural drafts, our award-winning design team transforms ambitious visions into blueprints.",
-    image:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    icon: Ruler,
-    title: "Civil & Structural Engineering",
-    subtitle: "Deep foundations, load analysis & seismic mitigation",
-    description:
-      "Our licensed engineers run thorough soil mechanics analysis, structural modeling, and environmental impact assessments on every project.",
-    image:
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    icon: HardHat,
-    title: "On-Site Management & Safety",
-    subtitle: "Critical path scheduling, zero-harm protocols & QA",
-    description:
-      "Experienced site superintendents supervise daily site operations, schedule tracking, and strict OSHA safety compliance from day one.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    icon: Layers,
-    title: "3D BIM Digital Modeling",
-    subtitle: "Conflict detection, 4D timeline simulation & cost control",
-    description:
-      "We implement digital twin BIM workflows that identify structural clashes prior to groundbreaking, reducing unexpected delays by 40%.",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    icon: Sparkles,
-    title: "Sustainable Green Building",
-    subtitle: "LEED certification, solar integration & eco materials",
-    description:
-      "We prioritize energy efficiency, net-zero emissions, and environmentally conscious construction methods that cut long-term operational costs.",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-  },
-];
-
 export default function ServicesPage() {
   return (
     <div className="w-full">
-      {/* Page Hero */}
       <PageHero
         title="Our Services"
         breadcrumb="Services"
         image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80"
       />
 
-      {/* Services Grid Section */}
       <section className="py-20 lg:py-28 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            tag="OUR CAPABILITIES"
-            title="Comprehensive construction & engineering services"
-            subtitle="We deliver end-to-end design, project management, and general contracting solutions customized to your timeline and capital constraints."
+            tag="OUR Services"
+            title="Our Construction Services"
+            subtitle="We specialize in structural, interior finishing and MEP works for industrial, commercial and residential projects."
             className="mb-16"
           />
 
@@ -159,16 +94,47 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <WhyChooseUsSection />
+      <section className="py-20 lg:py-28 relative  overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(to_right,#1E293B42_1px,transparent_1px),linear-gradient(to_bottom,#1E293B81_1px,transparent_1px)] bg-size-[2rem_2rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-15 pointer-events-none"
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            tag="what we do"
+            title="Building the future on a foundation of excellence"
+            subtitle="We specialize in a wide range of construction services, including residential, commercial, and industrial projects. From initial design to final inspection, we work closely with our clients to understand their unique needs and vision."
+            className="mb-16"
+          />
 
-      {/* Testimonials */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((s, idx) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: idx * 0.1,
+                  duration: 0.5,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="bg-secondary text-white rounded-2xl p-8 text-center "
+              >
+                <CounterStat start={0} end={s.value} suffix={s.prifix} className="text-5xl"/>
+                <div className="text-sm text-slate-300 font-medium">
+                  {s.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <TestimonialsSection />
 
-      {/* CTA Banner */}
       <CtaBanner />
 
-      {/* Contact Section */}
       <ContactSection />
     </div>
   );

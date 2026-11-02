@@ -9,21 +9,27 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    const formData = new FormData(e.currentTarget);
+    try {
+      const response = await fetch("http://localhost/api/v1/forms/submit.php", {
+        method: "POST",
+        body: formData,
+      }).then(res => res.json())
       setLoading(false);
       setSubmitted(true);
-    }, 700);
+
+    } catch (e) {
+      console.log(e);
+      setLoading(false)
+    }
   };
 
   return (
-    <section
-      id="contact"
-      className="py-20 lg:py-28  relative overflow-hidden"
-    >
-      {/* Blueprint grid watermark */}
+    <section id="contact" className="py-20 lg:py-28  relative overflow-hidden">
+      
       <div
         className="absolute inset-0 pointer-events-none bg-cover bg-center bg-no-repeat min-h-100 w-full"
         style={{
@@ -58,7 +64,7 @@ export default function ContactSection() {
               <div className="flex flex-col gap-6 mb-8">
                 <motion.a
                   whileHover={{ x: 4 }}
-                  href = {`tel:${phoneNo.replace(/\s+/g, "")}`}
+                  href={`tel:${phoneNo.replace(/\s+/g, "")}`}
                   className="flex items-start gap-4 text-slate-200 hover:text-primary transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-secondary transition-all shrink-0">
@@ -76,7 +82,7 @@ export default function ContactSection() {
 
                 <motion.a
                   whileHover={{ x: 4 }}
-                  href = {`mailto:${mail.replace(/\s+/g, "")}`}
+                  href={`mailto:${mail.replace(/\s+/g, "")}`}
                   // href="mailto:contact@builtup.com"
                   className="flex items-start gap-4 text-slate-200 hover:text-primary transition-colors group"
                 >
@@ -205,6 +211,7 @@ export default function ContactSection() {
                         Full Name *
                       </label>
                       <input
+                        name="full_name"
                         type="text"
                         required
                         placeholder="e.g. Robert Smith"
@@ -216,6 +223,7 @@ export default function ContactSection() {
                         Email Address *
                       </label>
                       <input
+                        name="email"
                         type="email"
                         required
                         placeholder="robert@example.com"
@@ -230,6 +238,7 @@ export default function ContactSection() {
                         Phone Number
                       </label>
                       <input
+                        name="phoneNo"
                         type="tel"
                         placeholder="+1 (555) 000-0000"
                         className="w-full px-4 py-3 rounded-xl border border-slate-300 text-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
@@ -239,7 +248,10 @@ export default function ContactSection() {
                       <label className="block text-xs font-heading font-bold text-slate-700 uppercase tracking-wider mb-2">
                         Service Required
                       </label>
-                      <select className="w-full px-4 py-3 rounded-xl border border-slate-300 text-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white cursor-pointer font-sans">
+                      <select
+                        name="service"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 text-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white cursor-pointer font-sans"
+                      >
                         <option>Commercial Construction</option>
                         <option>Architectural Design & BIM</option>
                         <option>Civil & Structural Engineering</option>
@@ -254,6 +266,7 @@ export default function ContactSection() {
                       Project Overview & Timeline *
                     </label>
                     <textarea
+                      name="overview"
                       required
                       rows={4}
                       placeholder="Tell us about the project scope, location, intended start date, or any specific structural requirements..."
